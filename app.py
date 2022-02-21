@@ -29,7 +29,7 @@ app.secret_key = 'gotta-change_this_soooon'
 DB_HOST = "localhost"
 DB_NAME = "Unfold"
 DB_USER = "postgres"
-DB_PASS = "ketto|69"
+DB_PASS = "******"
 
 conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
 UPLOAD_FOLDER = 'static/uploads/'
