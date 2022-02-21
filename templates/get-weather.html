@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+
+{% block title %}Add Event/Clothing Log - {% endblock %}
+
+{% block breadcrumb %}
+  <ol class="breadcrumb" aria-label="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item"><a href="/events">get-weather</a></li>
+  </ol>
+{% endblock %}
+{% block content %}
+<h2 class="playfair">Weather:</h2>
+          <img src="weather.weather_icon_url()" class="forecast" />
+          <h3 class="weather-temp">{{ temp_dict_celsius['temp_min']}}&deg; - {{temp_dict_celsius['temp_max']}}&deg;;</h3>
+            <h4>{{ weather.status }}</h4>
+          {{ weather.detailed_status }}
+
+{% endblock%}

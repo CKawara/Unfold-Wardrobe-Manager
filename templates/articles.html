@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+{% block title %}Closet{% endblock %}
+
+{% block breadcrumb %}
+   <ol class="breadcrumb" aria-label="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item active">Articles</li>
+  </ol>
+{% endblock %}
+
+{% block content %}
+
+<div id="total-articles" class="carousel-item active user-stats">
+    <h3 class="stats">{{number_of_articles}}</h3>
+    <p>articles</p>
+</div>
+
+
+<div class="container">
+    <h2>All items </h2>
+    <div>
+        <div class="gallery">
+            <ul class="reorder-gallery">
+            {% for row in articles %}
+                <li id="{{row.article_id}}" class="ui-sortable-handle"><a href="/articles/{{ row.article_id }}"><img src="/static/uploads/{{row.image}}" alt=""></a></li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div><div id="test"></div>
+</div>
+
+{% endblock%}

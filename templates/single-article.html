@@ -1,0 +1,53 @@
+{% extends 'layout.html' %}
+
+{% block title %}Closet{% endblock %}
+
+{% block breadcrumb %}
+   <ol class="breadcrumb" aria-label="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item active">Articles</li>
+  </ol>
+{% endblock %}
+
+
+{% block content %}
+<main class="container">
+
+  {% if article.image %}
+    <img class="reorder-gallery" src="/static/uploads/{{article.image}}">
+  {% endif %}
+
+  <form action="/update-article" method="POST">
+
+    <p>
+      Times worn: {{ article.times_worn }}
+    </p>
+    <p>
+      <input type="hidden" name="article-to-edit" id="article-to-edit" value="{{ article.article_id }}">
+      Purchase price: {% if article.purchase_price %}{{ '$%.2f'|format(article.purchase_price) }}{% endif %}
+    </p>
+
+    <div class="tag-frame scrollable row">
+      <div class="col">
+        <fieldset class="inline-block col-10 gray-border">
+          <legend class="manual-border">Tags:</legend>
+            {% for tag in tags %}
+              <div class="inline-block">
+                <input type="checkbox" id="{{ tag.tag_id }}" value="{{ tag.tag_id }}" name="article-tags" {% if tag in article.tags %} checked {% endif %}/>
+                <label for="{{ tag.tag_id }}">{{ tag.name }}</label>
+              </div>
+            {% endfor %}
+
+        </fieldset>
+      </div>
+    </div>
+  </form>
+
+  <form action="/delete-article" method="POST">
+    <input type="hidden" name="article-to-delete" id="article-to-delete" value="{{ article.article_id }}">
+    <label for="delete-article">Permanently delete this article?</label>
+    <input type="submit" id="delete-article" value="Delete">
+  </form>
+
+</main>
+{% endblock %}

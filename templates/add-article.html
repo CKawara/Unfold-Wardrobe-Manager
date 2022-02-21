@@ -1,0 +1,81 @@
+{% extends 'layout.html' %}
+
+{% block title %}Closet{% endblock %}
+
+{% block breadcrumb %}
+  <ol class="breadcrumb" aria-label="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item"><a href="/closet">Add article</a></li>
+  </ol>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+<div class="row">
+    <h2></h2>
+    <p>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul>
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+    </p>
+    {% if filename %}
+
+            <div style="padding:20px;float:left;">
+            <img width="500" src="{{ url_for('display_image', filename=filename) }}">
+        </div>
+    {% endif %}
+    <form action="/create-article" id="create-article-form" method="POST" enctype="multipart/form-data">
+        <dl>
+            <p>
+                 <label for="file">Select a file to upload:</label>
+                <input type="file" name="file" class="form-control" autocomplete="off" required>
+            </p>
+        </dl>
+
+            <p>
+    <label for="category">What category of clothing is this?*</label>
+    <select name="category" data-live-search="true" id="category-select" required class="form-control">
+        {% for category in categories %}
+          <option value="{{ category.category_id }}">{{ category.name }}</option>
+        {% endfor %}
+     </select>
+
+    </p>
+            <p>
+      <label for="article-description">Describe the item (optional):</label>
+      <input type="text" name="article-description" id="new-article-description-input" />
+    </p>
+    <p>
+      <label for="purchase-price">Purchase price:</label>
+      Ksh <input type="number" step="any" name="purchase-price" />
+    </p>
+<div class="tag-frame scrollable row">
+    <fieldset class="gray-border">
+      <legend class="manual-border">Tags (optional):</legend>
+        {% for tag in tags %}
+          <div class="inline-block">
+            <input type="checkbox" id="{{ tag.tag_id }}" value="{{ tag.tag_id }}" name="article-tags" />
+            <label for="{{ tag.tag_id }}">{{ tag.name }}</label>
+          </div>
+        {% endfor %}
+        <div>
+          <label for="new-tags">Add more tags (separate with commas):</label>
+          <input type="text" id="new-tags" name="new-tags" />
+        </div>
+    </fieldset>
+</div>
+    <p>
+            <input type="submit" value="Create Item" class="btn btn-info">
+    </p>
+    </form>
+</div>
+    </div>
+{% endblock %}

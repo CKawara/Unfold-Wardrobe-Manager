@@ -1,0 +1,77 @@
+{% extends 'layout.html' %}
+ 
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h1 class="h2">Dashboard</h1>
+<p>Welcome back, {{ username }}!</p>
+
+<div class="container col-12">
+  <div class="row col-12" id="homepage-content">
+    <div class="col-2 offset-1 right-side inline-block">
+      <div class="recommendation homepage-outfit-frame">
+        <h1 id="greeting" class="playfair">What shall we wear today?</h1>
+
+      </div>
+    </div>
+
+
+
+      <div class="row">
+        <div class="forecast tomorrow align-top">
+          <h2 class="playfair">Weather:</h2>
+          <img src="weather.weather_icon_url()" class="forecast" />
+          <h3 class="weather-temp">{{ temp_dict_celsius['temp_min']}}&deg; - {{temp_dict_celsius['temp_max']}}&deg;;</h3>
+            <h4>{{ weather.status }}</h4>
+          {{ weather.detailed_status }}
+        </div>
+      </div>
+
+
+
+
+
+
+
+ <div class="row block">
+        <h2 class="playfair top-padding">Your stats:  </h2> <br>
+
+        <div class="row carousel">
+
+          <section name="statistics" id="carouselExampleControls" class="carousel slide" data-interval="false">
+            <div class="carousel-inner">
+              <div id="total-articles" class="carousel-item active user-stats">
+                    <h3 class="stats">{{number_of_articles}}</h3>
+                    <h4>articles</h4>
+              </div>
+
+              <div id="total-outfits" class="carousel-item user-stats">
+                <h3 class="stats">{{ number_of_outfits }}</h3>
+                <p>outfits</p>
+              </div>
+
+              <div id="total-events" class="carousel-item user-stats">
+                <h3 class="stats">{{ number_of_wear_events }}</h3>
+                <p>events</p>
+              </div>
+
+              <div id="total-categories" class="carousel-item user-stats">
+                <h3 class="stats">{{ number_of_categories }}</h3>
+                <p>categories</p>
+              </div>
+
+                <a href="/add-article">
+          <button class="add-button">
+               +
+          </button>
+        </a>
+          </section>
+        </div>
+      </div>
+
+
+
+
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block title %} {{ category.name }} - {% endblock %}
+
+{% block breadcrumb %}
+  <ol class="breadcrumb" aria-label="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item"><a href="/categories">Closet</a></li>
+    <li class="breadcrumb-item active">{{ category.name }}</li>
+  </ol>
+{% endblock %}
+
+{% block content %}
+
+        <div class="gallery">
+            <ul class="reorder-gallery">
+            {% for row in articles %}
+                <li id="{{row.article_id}}" class="ui-sortable-handle"><a href="/articles/{{ row.article_id }}"><img src="/static/uploads/{{row.image}}" alt=""></a></li>
+            {% endfor %}
+            </ul>
+        </div>
+  <button class="articles-block block-bucket">
+    <a href="/add-article">
+      +
+    </a>
+  </button>
+{% endblock%}

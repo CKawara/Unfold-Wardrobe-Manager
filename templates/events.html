@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+ 
+{% block title %}Events{% endblock %}
+
+{% block breadcrumb %}
+  <ol class="breadcrumb" aria-label="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item active">Events</li>
+  </ol>
+{% endblock %}
+
+{% block content %}
+<h1 class="h2">Eventss</h1>
+<p>Welcome back</p>
+
+
+<main class="container">
+      {% for event in wear_events %}
+      {% if event in wear_events %}
+        <button class="event-block block-bucket">
+          <a href="/events/{{ event.wear_event_id }}">
+            {{ event.date }} - {{ event.name }}
+          </a>
+        </button>
+      {% endif %}
+      {% endfor %}
+
+
+  <div class="row top-padding">
+    <a href="/add-event">
+      <button class="add-button">
+        +
+      </button>
+    </a>
+  </div>
+</main>
+
+{% endblock %}

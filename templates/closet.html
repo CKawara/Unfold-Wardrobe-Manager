@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+
+{% block title %}Closet{% endblock %}
+
+{% block breadcrumb %}
+  <ol class="breadcrumb" aria-label="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item active">Closet</li>
+  </ol>
+{% endblock %}
+
+
+{% block content %}
+<h1 class="h2">My Closet</h1>
+<main class="container">
+  <div class="scrollable">
+
+        {% for category in categories %}
+          {% if category in categories %}
+            <button class=" block-bucket">
+              <a href="/closet/{{ category.category_id }}">
+                {{ category.name }}
+              </a>
+            </button>
+          {% endif %}
+        {% endfor %}
+        <a href="/add-category">
+          <button class="add-button">
+               +
+          </button>
+        </a>
+
+  </div>
+</main>
+{% endblock %}
+

@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+ 
+{% block title %}Outfits{% endblock %}
+
+{% block content %}
+<h1 class="h2">Outfits</h1>
+<p>Welcome back</p>
+
+<main class="container">
+  <div class="row">
+    {% for outfit in outfits %}
+    {% if outfit in outfits %}
+      <button class=" block-bucket">
+        <a href="/outfits/{{ outfit.outfit_id }}">
+        {{ outfit.name }}
+        </a>
+      </button>
+    {% endif %}
+    {% endfor %}
+
+    <a href="/add-outfit">
+      <button class="add-button">
+           +
+      </button>
+    </a>
+  </div>
+</main>
+{% endblock %}
+

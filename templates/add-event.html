@@ -1,0 +1,76 @@
+{% extends 'layout.html' %}
+
+{% block title %}Add Event/Clothing Log - {% endblock %}
+
+{% block breadcrumb %}
+  <ol class="breadcrumb" aria-label="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item"><a href="/events">Events</a></li>
+    <li class="breadcrumb-item active">Add event</li>
+  </ol>
+{% endblock %}
+
+{% block content %}
+<main class="container">
+  <form action="/create-event" id="create-event-form" method="POST" enctype="multipart/form-data">
+    <p>
+      <label for="event-date">Date of event or log*:</label>
+      <input type="date" name="event-date" required>
+    </p>
+    <p>
+      <label for="event-time">Time of event (optional):</label>
+      <input type="time" name="event-time">
+    </p>
+    <p>
+      <label for="event-name">Name of the event (optional):</label>
+      <input type="text" name="event-name" id="new-event-name-input">
+    </p>
+    <p>
+      <label for="event-description">Description of the event (optional):</label>
+      <input type="text" name="event-description" id="new-event-description-input">
+    </p>
+    <p>
+      <label for="city">Location:</label>
+        <select name="city" id="city-select">
+          <option value="">------</option>
+        {% for city in CITIES %}
+          {{ city }}
+          <option value="{{ CITIES[city]['location_id'] }}">{{ CITIES[city]['name'] }}</option>
+        {% endfor %}
+      </select>
+    </p>
+    <p>
+      <label for="event-outfit">Outfit to add (optional):</label>
+      <select name="event-outfit" id="event-outfit-select">
+          <option value="">------</option>
+        {% for outfit in outfits %}
+          <option value="{{ outfit.outfit_id }}">
+            #{{ outfit.outfit_id }}
+            {% if outfit.description %}
+               - {{ outfit.description }}
+            {% elif outfit.name %}
+               - {{ outfit.name }}
+            {% endif %}
+          </option>
+        {% endfor %}
+      </select>
+    </p>
+
+    <div class="tag-frame row">
+      <div class="col">
+        <fieldset class="gray-border inline-block col-10">
+          <legend class="manual-border">Tags (optional):</legend>
+            {% for tag in tags %}
+              <div class="inline-block">
+                <input type="checkbox" id="{{ tag.tag_id }}" value="{{ tag.tag_id }}" name="event-tags" />
+                <label for="{{ tag.tag_id }}">{{ tag.name }}</label>
+              </div>
+            {% endfor %}
+          </fieldset>
+        </div>
+      </div>
+
+    <input type="submit" value="Create event">
+  </form>
+</main>
+{% endblock%}
