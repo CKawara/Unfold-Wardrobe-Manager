@@ -1,7 +1,7 @@
 # Unfold-Wardrobe-Manager
 <img src="https://github.com/CKawara/Unfold-Wardrobe-Manager/blob/master/static/img/img.png">
 
-A web application for digitally organizing wardrobes and help the users get the most out of their closets without having to break the bank.
+A web application for digitally organizing wardrobes to help the users get the most out of their closets without having to break the bank.
 
 ## Objective:
 For those with too many clothes and shoes, remembering what clothes' one has can be quite a challenge. Some end up spending alot of moneyon new clothes only to end up wearing the same clothes without even noticing it. Therefore, there’s need of a digital solution to help people with limited time and style to favorably present themselves and efficiently organize and utilize their wardrobe.
