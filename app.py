@@ -27,9 +27,9 @@ app = Flask(__name__)
 app.secret_key = 'gotta-change_this_soooon'
 
 DB_HOST = "localhost"
-DB_NAME = "Unfold"
+DB_NAME = "YOUR_DB_NAME"
 DB_USER = "postgres"
-DB_PASS = "******"
+DB_PASS = "YOUR_DB_PASSWORD"
 
 conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
 UPLOAD_FOLDER = 'static/uploads/'
@@ -38,7 +38,7 @@ app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 
-owm = OWM('2e55b43611522f33e344825cf2966521')
+owm = OWM('YOUR_API_KEY')
 
 
 @app.route('/')
