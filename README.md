@@ -32,5 +32,14 @@ For those with too many clothes and shoes, remembering what clothes' one has can
 3. Create the postgres db
 4. Create the necessary tables to to run this project
 
+## Known Bugs
+
+1. The clothing items in outfits don't display correctly
+
+## To-DO
+
+1. Introduce machine learning so that the app is able to create outfits automatically based on color, weather, etc.
+2. Introduce a laundry basket where the app will toss all dirty items for even better management of the user's wardrobe.
+
 ## Contributers
 [Catherine Kawara](https://github.com/CKawara/)
